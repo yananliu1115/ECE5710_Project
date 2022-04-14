@@ -45,15 +45,16 @@ const Analytics = () => {
                     <Grid item lg={8} md={8} sm={12} xs={12}>
                         <StatCards />
                         {/* <TopSellingTable /> */}
-                        <StatCards2 />
+                        {/* <StatCards2 /> */}
                         {/* <H4>Ongoing Projects</H4>
                         <RowCards /> */}
                     </Grid>
 
-                    <Grid item lg={4} md={4} sm={12} xs={12}>
+
+                    {/* <Grid item lg={4} md={4} sm={12} xs={12}>
                         <Card sx={{ px: 3, py: 2, mb: 3 }}>
                             <Title>Storage Usage</Title>
-                            {/* <SubTitle>Last 30 days</SubTitle> */}
+                            <SubTitle>Last 30 days</SubTitle>
                             <DoughnutChart
                                 height="300px"
                                 color={[
@@ -63,8 +64,8 @@ const Analytics = () => {
                                 ]}
                             />
                         </Card>
-                        {/* <Campaigns /> */}
-                    </Grid>
+                        <Campaigns />
+                    </Grid> */}
                 </Grid>
             </ContentBox>
         </Fragment>

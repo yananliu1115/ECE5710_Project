@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom'
 import { Box, styled, useTheme } from '@mui/system'
 import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator'
 import { Paragraph, Span } from 'app/components/Typography'
+import { TextSnippet } from '@mui/icons-material'
 
 const FlexBox = styled(Box)(() => ({
     display: 'flex',
@@ -53,7 +54,7 @@ const JwtLogin = () => {
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
     const [userInfo, setUserInfo] = useState({
-        email: 'yz2729@cornell.edu',
+        email: 'yl2248@cornell.edu',
         password: 'test',
     })
     const [message, setMessage] = useState('')
@@ -69,6 +70,8 @@ const JwtLogin = () => {
     const textError = palette.error.main
     const textPrimary = palette.primary.main
 
+    
+    
     const handleFormSubmit = async (event) => {
         setLoading(true)
         try {

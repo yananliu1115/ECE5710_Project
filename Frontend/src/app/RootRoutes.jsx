@@ -20,6 +20,7 @@ const errorRoute = [
     },
 ]
 
+
 const routes = [
     ...dashboardRoutes,
     ...materialRoutes,
