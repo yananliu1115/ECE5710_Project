@@ -44,7 +44,6 @@ const Analytics = () => {
                 <Grid container spacing={3}>
                     <Grid item lg={8} md={8} sm={12} xs={12}>
                         <StatCards />
-                        <StatCards />
                         {/* <TopSellingTable /> */}
                         <StatCards2 />
                         {/* <H4>Ongoing Projects</H4>

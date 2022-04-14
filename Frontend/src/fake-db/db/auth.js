@@ -8,21 +8,22 @@ const userList = [
     {
         id: 1,
         role: 'SA',
-        name: 'Jason Alexander',
-        username: 'jason_alexander',
-        email: 'jason@ui-lib.com',
-        avatar: '/assets/images/face-6.jpg',
-        age: 25,
+        name: 'Suhui Yu',
+        username: 'sy466',
+        email: 'sy466@cornell.edu',
+        avatar: '/assets/images/face-4.jpg',
+        age: 18,
     },
     {
         id: 2,
         role: 'SA',
-        name: 'Yu Zhang',
-        username: 'yz2729',
-        email: 'yz2729@cornell.edu',
-        avatar: '/assets/images/face-6.jpg',
-        age: 25,
+        name: 'Yanan Liu',
+        username: 'yl2248',
+        email: 'yl2248@cornell.edu',
+        avatar: '/assets/images/face-5.jpg',
+        age: 18,
     },
+    
 ]
 
 // FOLLOWING CODES ARE MOCK SERVER IMPLEMENTATION
