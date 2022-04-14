@@ -17,10 +17,10 @@ const userList = [
     {
         id: 2,
         role: 'SA',
-        name: 'Yu Zhang',
-        username: 'yz2729',
-        email: 'yz2729@cornell.edu',
-        avatar: '/assets/images/face-6.jpg',
+        name: 'Yanan Liu',
+        username: 'yl2248',
+        email: 'yl2248@cornell.edu',
+        avatar: '/assets/images/face-5.jpg',
         age: 25,
     },
 ]

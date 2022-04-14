@@ -56,15 +56,15 @@ const StatCards = () => {
                     </Tooltip>
                 </StyledCard>
             </Grid>
-            {/* <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={6}>
                 <StyledCard elevation={6}>
                     <ContentBox>
-                        <Icon className="icon">attach_money</Icon>
+                        <Icon className="icon">books</Icon>
                         <Box ml="12px">
-                            <Small sx={{ lineHeight: 1 }}>
-                                This week Sales
+                            <Small >
+                                Books Borrowed
                             </Small>
-                            <Heading>$80,500</Heading>
+                            <Heading>500</Heading>
                         </Box>
                     </ContentBox>
                     <Tooltip title="View Details" placement="top">
@@ -73,14 +73,14 @@ const StatCards = () => {
                         </IconButton>
                     </Tooltip>
                 </StyledCard>
-            </Grid> */}
-            {/* <Grid item xs={12} md={6}>
+            </Grid>
+            <Grid item xs={12} md={6}>
                 <StyledCard elevation={6}>
                     <ContentBox>
-                        <Icon className="icon">store</Icon>
+                        <Icon className="icon">book</Icon>
                         <Box ml="12px">
-                            <Small>Inventory Status</Small>
-                            <Heading>8.5% Stock Surplus</Heading>
+                            <Small>Books Avaliable</Small>
+                            <Heading>8,000</Heading>
                         </Box>
                     </ContentBox>
                     <Tooltip title="View Details" placement="top">
@@ -89,14 +89,14 @@ const StatCards = () => {
                         </IconButton>
                     </Tooltip>
                 </StyledCard>
-            </Grid> */}
-            {/* <Grid item xs={12} md={6}>
+            </Grid>
+            <Grid item xs={12} md={6}>
                 <StyledCard elevation={6}>
                     <ContentBox>
-                        <Icon className="icon">shopping_cart</Icon>
+                        <Icon className="icon">house</Icon>
                         <Box ml="12px">
-                            <Small>Orders to deliver</Small>
-                            <Heading>305 Orders</Heading>
+                            <Small>Rooms</Small>
+                            <Heading>50 Avaliable</Heading>
                         </Box>
                     </ContentBox>
                     <Tooltip title="View Details" placement="top">
@@ -105,7 +105,7 @@ const StatCards = () => {
                         </IconButton>
                     </Tooltip>
                 </StyledCard>
-            </Grid> */}
+            </Grid>
         </Grid>
     )
 }
