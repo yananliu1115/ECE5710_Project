@@ -324,7 +324,7 @@ CREATE TABLE `user` (
 /*Data for the table `user` */
 
 insert  into `user`(`id`,`username`,`nickname`,`password_hash`,`password_salt`,`status`,`create_at`,`update_at`) values 
-(1,'Suhui','Suhui','1e191d851b3b49a248f4ea62f6bwsxzaq1206410','123456',6,'2022-04-14 20:33:05','2022-04-14 20:33:05'),
+(1,'Suhui','Suhui','1e191d851b3b49a248f4ea62f6b06410','123456',6,'2022-04-14 20:33:05','2022-04-14 20:33:05'),
 (2,'Yanan','Yanan','1e191d851b3b49a248f4ea62f6b06410','123456',6,'2022-04-14 20:33:05','2020-07-22 20:33:05');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
