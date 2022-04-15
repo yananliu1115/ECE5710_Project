@@ -73,10 +73,12 @@ const reducer = (state, action) => {
     }
 }
 
+
 const AuthContext = createContext({
     ...initialState,
     method: 'JWT',
     login: () => Promise.resolve(),
+    loginBackend: () => Promise.resolve(),
     logout: () => { },
     register: () => Promise.resolve(),
 })
@@ -93,6 +95,62 @@ export const AuthProvider = ({ children }) => {
 
         setSession(accessToken)
 
+        dispatch({
+            type: 'LOGIN',
+            payload: {
+                user,
+            },
+        })
+    }
+
+    
+
+    const loginBackend = async (email, password) => {
+        // const response = await axios.post('localhost:8000/api/auth/login',{headers}, {
+        //     email,
+        //     password,
+        // })
+        
+        const data = {
+            "username": email,
+            "password": password,
+        }
+        console.log(data)
+        const response = await fetch("http://localhost:8000/api/auth/login", {
+            method:"POST",
+            crossDomain:true,
+            mode: 'cors',
+            body: JSON.stringify({
+                username: email,
+                password: password,
+              }),
+            headers:{
+              'Content-Type': 'application/json'// 有一定可能需要明确一下 Content Type
+            },
+           
+            // data:data
+          }).then(res => {
+              return res.json();
+          }).then(json => {
+              console.log('获取的结果', json);
+              return json;
+          }).catch(err => {
+              console.log('请求错误', err);
+          })
+
+        console.log(response)
+        let {  user, accessToken } = response
+
+        setSession(accessToken)
+        
+        user = {
+            ...user,
+            role:"SA",
+            avatar: '/assets/images/face-5.jpg',
+            name: user.username,
+            age: 18,
+        }
+        console.log(user)
         dispatch({
             type: 'LOGIN',
             payload: {
@@ -174,6 +232,7 @@ export const AuthProvider = ({ children }) => {
                 ...state,
                 method: 'JWT',
                 login,
+                loginBackend,
                 logout,
                 register,
             }}

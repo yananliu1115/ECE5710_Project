@@ -44,6 +44,8 @@ const JWTRoot = styled(JustifyBox)(() => ({
     },
 }))
 
+
+
 const StyledProgress = styled(CircularProgress)(() => ({
     position: 'absolute',
     top: '6px',
@@ -54,11 +56,11 @@ const JwtLogin = () => {
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
     const [userInfo, setUserInfo] = useState({
-        email: 'yl2248@cornell.edu',
+        email: 'yanan',
         password: 'test',
     })
     const [message, setMessage] = useState('')
-    const { login } = useAuth()
+    const { login, loginBackend} = useAuth()
 
     const handleChange = ({ target: { name, value } }) => {
         let temp = { ...userInfo }
@@ -75,7 +77,8 @@ const JwtLogin = () => {
     const handleFormSubmit = async (event) => {
         setLoading(true)
         try {
-            await login(userInfo.email, userInfo.password)
+            // await login(userInfo.email, userInfo.password)
+            await loginBackend(userInfo.email, userInfo.password)
             navigate('/')
         } catch (e) {
             console.log(e)
@@ -105,10 +108,10 @@ const JwtLogin = () => {
                                     size="small"
                                     label="Email"
                                     onChange={handleChange}
-                                    type="email"
+                                    type="username"
                                     name="email"
                                     value={userInfo.email}
-                                    validators={['required', 'isEmail']}
+                                    validators={['required']}
                                     errorMessages={[
                                         'this field is required',
                                         'email is not valid',
