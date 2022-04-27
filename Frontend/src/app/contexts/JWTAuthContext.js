@@ -3,6 +3,8 @@ import jwtDecode from 'jwt-decode'
 import axios from 'axios.js'
 import { MatxLoading } from 'app/components'
 import { nextMonday } from 'date-fns'
+import { Navigate } from 'react-router-dom'
+
 
 const initialState = {
     isAuthenticated: false,
@@ -30,6 +32,23 @@ const setSession = (accessToken) => {
     }
 }
 
+const setUser = (user) => {
+    if (user){
+        localStorage.setItem('user', JSON.stringify(user))
+    } else{
+        localStorage.setItem('user', JSON.stringify({}))
+    }
+}
+
+
+const setIsAuthenticated = (isAuthenticated) => {
+    if (isAuthenticated) {
+        localStorage.setItem('isAuthenticated', true)
+    } else {
+        localStorage.setItem('isAuthenticated', false)
+    }
+}
+
 const reducer = (state, action) => {
     switch (action.type) {
         case 'INIT': {
@@ -51,6 +70,8 @@ const reducer = (state, action) => {
                 name: user.first_name + " " + user.last_name,
                 age: 18,
             }
+            setUser(user)
+            setIsAuthenticated(true)
             return {
                 ...state,
                 isAuthenticated: true,
@@ -58,6 +79,9 @@ const reducer = (state, action) => {
             }
         }
         case 'LOGOUT': {
+            setUser(null)
+            setIsAuthenticated(null)
+            
             return {
                 ...state,
                 isAuthenticated: false,
@@ -73,6 +97,8 @@ const reducer = (state, action) => {
                 name: user.first_name + " " + user.last_name,
                 age: 18,
             }
+            setUser(user)
+            setIsAuthenticated(true)
             return {
                 ...state,
                 isAuthenticated: true,
@@ -228,12 +254,11 @@ export const AuthProvider = ({ children }) => {
           }).then(json => {
               console.log('获取的结果', json);
               setSession(null)
-            dispatch({ type: 'LOGOUT' })
+                dispatch({ type: 'LOGOUT' })
               return json;
           }).catch(err => {
               console.log('请求错误', err);
           })
-        
     }
 
     useEffect(() => {

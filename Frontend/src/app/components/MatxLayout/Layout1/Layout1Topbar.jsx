@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import useAuth from 'app/hooks/useAuth'
 import useSettings from 'app/hooks/useSettings'
 import { styled, useTheme, Box } from '@mui/system'
@@ -22,6 +22,7 @@ import { topBarHeight } from 'app/utils/constant'
 const StyledIconButton = styled(IconButton)(({ theme }) => ({
     color: theme.palette.text.primary,
 }))
+
 
 const TopbarRoot = styled('div')(({ theme }) => ({
     top: 0,
@@ -87,8 +88,11 @@ const IconBox = styled('div')(({ theme }) => ({
 const Layout1Topbar = () => {
     const theme = useTheme()
     const { settings, updateSettings } = useSettings()
-    const { logout, logoutBackend, user } = useAuth()
+    const { logout, logoutBackend } = useAuth()
+    const user = JSON.parse(localStorage.getItem('user'))
     const isMdScreen = useMediaQuery(theme.breakpoints.down('md'))
+    const navigate = useNavigate();
+
 
     const updateSidebarMode = (sidebarSettings) => {
         updateSettings({
@@ -176,7 +180,10 @@ const Layout1Topbar = () => {
                             <Icon> settings </Icon>
                             <Span> Settings </Span>
                         </StyledItem>
-                        <StyledItem onClick={logoutBackend}>
+                        <StyledItem onClick={ () => {
+                            logoutBackend();
+                            navigate('/session/signin');
+                        }}>
                             <Icon> power_settings_new </Icon>
                             <Span> Logout </Span>
                         </StyledItem>

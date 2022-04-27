@@ -20,15 +20,17 @@ const getUserRoleAuthStatus = (pathname, user, routes) => {
 }
 
 const AuthGuard = ({ children }) => {
-    const { isAuthenticated, user } = useAuth()
-
+    // const { isAuthenticated, user } = useAuth()
+    const isAuthenticated = localStorage.getItem('isAuthenticated')
+    const user = JSON.parse(localStorage.getItem('user'))
     // return <>{isAuthenticated ? children : <Navigate to="/session/signin" />}</>
 
     const [previouseRoute, setPreviousRoute] = useState(null)
     const { pathname } = useLocation()
     const routes = flat(AllPages())
 
-    console.log(user)
+    // console.log(user)
+    // console.log(isAuthenticated)
 
     const isUserRoleAuthenticated = getUserRoleAuthStatus(
         pathname,
