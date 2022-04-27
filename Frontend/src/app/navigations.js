@@ -6,7 +6,7 @@ export const navigations = [
     },
     {
         name: 'Student Board',
-        path: '/admin',
+        path: '/student',
         icon: 'dashboard',
     },
 ]
