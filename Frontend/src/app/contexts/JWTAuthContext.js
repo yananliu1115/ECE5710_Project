@@ -43,8 +43,14 @@ const reducer = (state, action) => {
             }
         }
         case 'LOGIN': {
-            const { user } = action.payload
-
+            let { user } = action.payload
+            user = {
+                ...user,
+                role:"SA",
+                avatar: `https://ui-avatars.com/api/?name=${user.first_name}+${user.last_name}&background=0D8ABC&color=fff&size=128`,
+                name: user.first_name + " " + user.last_name,
+                age: 18,
+            }
             return {
                 ...state,
                 isAuthenticated: true,
@@ -59,8 +65,14 @@ const reducer = (state, action) => {
             }
         }
         case 'REGISTER': {
-            const { user } = action.payload
-
+            let { user } = action.payload
+            user = {
+                ...user,
+                role:"SA",
+                avatar: `https://ui-avatars.com/api/?name=${user.first_name}+${user.last_name}&background=0D8ABC&color=fff&size=128`,
+                name: user.first_name + " " + user.last_name,
+                age: 18,
+            }
             return {
                 ...state,
                 isAuthenticated: true,
@@ -140,13 +152,7 @@ export const AuthProvider = ({ children }) => {
 
         setSession(token)
         
-        user = {
-            ...user,
-            role:"SA",
-            avatar: '/assets/images/face-5.jpg',
-            name: user.first_name + " " + user.last_name,
-            age: 18,
-        }
+        
         console.log(user)
         dispatch({
             type: 'LOGIN',
@@ -195,14 +201,6 @@ export const AuthProvider = ({ children }) => {
         let { token, user } = response
 
         setSession(token)
-        
-        user = {
-            ...user,
-            role:"SA",
-            avatar: '/assets/images/face-5.jpg',
-            name: user.first_name + " " + user.last_name,
-            age: 18,
-        }
 
         dispatch({
             type: 'REGISTER',

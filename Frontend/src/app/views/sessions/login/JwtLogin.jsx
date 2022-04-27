@@ -56,8 +56,8 @@ const JwtLogin = () => {
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
     const [userInfo, setUserInfo] = useState({
-        email: 'yanan',
-        password: 'test',
+        email: 'yl2248@cornell.edu',
+        password: 'test12345@',
     })
     const [message, setMessage] = useState('')
     const { login, loginBackend} = useAuth()
