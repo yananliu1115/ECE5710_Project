@@ -20,9 +20,7 @@ const getUserRoleAuthStatus = (pathname, user, routes) => {
 }
 
 const AuthGuard = ({ children }) => {
-    // const { isAuthenticated, user } = useAuth()
-    const isAuthenticated = localStorage.getItem('isAuthenticated')
-    const user = JSON.parse(localStorage.getItem('user'))
+    const { isAuthenticated, user } = useAuth()
     // return <>{isAuthenticated ? children : <Navigate to="/session/signin" />}</>
 
     const [previouseRoute, setPreviousRoute] = useState(null)

@@ -88,8 +88,7 @@ const IconBox = styled('div')(({ theme }) => ({
 const Layout1Topbar = () => {
     const theme = useTheme()
     const { settings, updateSettings } = useSettings()
-    const { logout, logoutBackend } = useAuth()
-    const user = JSON.parse(localStorage.getItem('user'))
+    const { logout, logoutBackend, user } = useAuth()
     const isMdScreen = useMediaQuery(theme.breakpoints.down('md'))
     const navigate = useNavigate();
 

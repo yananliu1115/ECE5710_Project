@@ -49,6 +49,15 @@ const setIsAuthenticated = (isAuthenticated) => {
     }
 }
 
+const encapsulateUser = (user) =>{
+    return {
+        ...user,
+        role: user.is_superuser ? "admin"  : "student",
+        avatar: `https://ui-avatars.com/api/?name=${user.first_name}+${user.last_name}&background=0D8ABC&color=fff&size=128`,
+        name: user.first_name + " " + user.last_name,
+    }
+}
+
 const reducer = (state, action) => {
     switch (action.type) {
         case 'INIT': {
@@ -63,13 +72,7 @@ const reducer = (state, action) => {
         }
         case 'LOGIN': {
             let { user } = action.payload
-            user = {
-                ...user,
-                role:"SA",
-                avatar: `https://ui-avatars.com/api/?name=${user.first_name}+${user.last_name}&background=0D8ABC&color=fff&size=128`,
-                name: user.first_name + " " + user.last_name,
-                age: 18,
-            }
+            user = encapsulateUser(user)
             setUser(user)
             setIsAuthenticated(true)
             return {
@@ -90,13 +93,7 @@ const reducer = (state, action) => {
         }
         case 'REGISTER': {
             let { user } = action.payload
-            user = {
-                ...user,
-                role:"SA",
-                avatar: `https://ui-avatars.com/api/?name=${user.first_name}+${user.last_name}&background=0D8ABC&color=fff&size=128`,
-                name: user.first_name + " " + user.last_name,
-                age: 18,
-            }
+            user = encapsulateUser(user)
             setUser(user)
             setIsAuthenticated(true)
             return {
@@ -186,6 +183,8 @@ export const AuthProvider = ({ children }) => {
                 user,
             },
         })
+
+        return user
     }
 
     const register = async (email, username, password) => {
@@ -268,8 +267,9 @@ export const AuthProvider = ({ children }) => {
 
                 if (accessToken && isValidToken(accessToken)) {
                     setSession(accessToken)
-                    const response = await axios.get('/api/auth/profile')
-                    const { user } = response.data
+                    // const response = await axios.get('/api/auth/profile')
+                    // const { user } = response.data
+                    const user = JSON.parse(localStorage.getItem('user'))
 
                     dispatch({
                         type: 'INIT',
