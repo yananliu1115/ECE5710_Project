@@ -218,8 +218,24 @@ export const AuthProvider = ({ children }) => {
     }
 
     const logoutBackend = async () => {
-        setSession(null)
-        dispatch({ type: 'LOGOUT' })
+        await fetch("http://localhost:8000/api/auth/logout", {
+            method:"POST",
+            crossDomain:true,
+            mode: 'cors',
+            headers:{
+              'Content-Type': 'application/json'// 有一定可能需要明确一下 Content Type
+            },
+          }).then(res => {
+              return res.json();
+          }).then(json => {
+              console.log('获取的结果', json);
+              setSession(null)
+            dispatch({ type: 'LOGOUT' })
+              return json;
+          }).catch(err => {
+              console.log('请求错误', err);
+          })
+        
     }
 
     useEffect(() => {
