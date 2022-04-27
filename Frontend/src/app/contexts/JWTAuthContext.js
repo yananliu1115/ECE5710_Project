@@ -121,7 +121,7 @@ export const AuthProvider = ({ children }) => {
             crossDomain:true,
             mode: 'cors',
             body: JSON.stringify({
-                username: email,
+                email: email,
                 password: password,
               }),
             headers:{

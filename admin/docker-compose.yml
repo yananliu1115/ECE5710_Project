@@ -1,0 +1,45 @@
+version: '3.8'
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    
+    # command: [ sh, -c, 'sleep 10 && python manage.py migrate &&  python manage.py runserver 0.0.0.0:8000'] # first time run
+    # command: [ sh, -c, 'sleep 10 &&  python manage.py runserver 0.0.0.0:8000'] # regular run 
+    command: [ sh, -c, 'sleep infinity'] # regular run 
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/app
+      - ./mysqld:/var/run/mysqld:rw
+    depends_on:
+      - db
+
+  queue:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: [sh, -c , 'sleep 10 && python -u consumer.py']
+    volumes:
+      - .:/app
+      - ./mysqld:/var/run/mysqld:rw
+    depends_on:
+      - db
+
+  db:
+    # image: mysql:5.7.22
+    image: arm64v8/mysql:oracle # for M1 mac
+    restart: always
+    environment:
+      MYSQL_DATABASE: admin
+      # MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+    user: mysql
+    volumes:
+      - .dbdata:/var/lib/mysql:rw
+      - ./mysqld:/var/run/mysqld:rw
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - 33066:3306
