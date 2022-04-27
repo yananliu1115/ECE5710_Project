@@ -16,12 +16,12 @@ class AuthUserSerializer(serializers.ModelSerializer):
 
     class Meta:
          model = User
-         fields = ('id', 'email', 'first_name', 'last_name', 'is_active', 'is_staff', 'is_superuser', )
+         fields = ('id', 'email', 'first_name', 'last_name', 'is_active', 'is_staff', 'is_superuser')
          read_only_fields = ('id', 'is_active', 'is_staff',  )
     
-    def get_auth_token(self, obj):
-        token = Token.objects.create(user=obj)
-        return token.key
+    # def get_auth_token(self, obj):
+    #     token = Token.objects.create(user=obj)
+    #     return token.key
 
 class EmptySerializer(serializers.Serializer):
     pass

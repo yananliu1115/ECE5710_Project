@@ -38,7 +38,7 @@ const JWTRegister = styled(JustifyBox)(() => ({
 const JwtRegister = () => {
     const navigate = useNavigate()
     const [state, setState] = useState({})
-    const { register } = useAuth()
+    const { register,registerBackend } = useAuth()
 
     const handleChange = ({ target: { name, value } }) => {
         setState({
@@ -47,16 +47,23 @@ const JwtRegister = () => {
         })
     }
 
-    const handleFormSubmit = (event) => {
+    const handleFormSubmit = async (event) => {
         try {
-            register(state.email, state.username, state.password)
+            // register(state.email, state.first_name, state.last_name, state.password)
+            const data = {
+                email: state.email,
+                first_name: state.first_name,
+                last_name: state.last_name,
+                password: state.password,
+            }
+            await registerBackend(data)
             navigate('/')
         } catch (e) {
             console.log(e)
         }
     }
 
-    let { username, email, password, agreement } = state
+    let { first_name, last_name, email, password, agreement } = state
 
     return (
         <JWTRegister>
@@ -77,18 +84,6 @@ const JwtRegister = () => {
                                     sx={{ mb: 3, width: '100%' }}
                                     variant="outlined"
                                     size="small"
-                                    label="Username"
-                                    onChange={handleChange}
-                                    type="text"
-                                    name="username"
-                                    value={username || ''}
-                                    validators={['required']}
-                                    errorMessages={['this field is required']}
-                                />
-                                <TextValidator
-                                    sx={{ mb: 3, width: '100%' }}
-                                    variant="outlined"
-                                    size="small"
                                     label="Email"
                                     onChange={handleChange}
                                     type="email"
@@ -100,6 +95,32 @@ const JwtRegister = () => {
                                         'email is not valid',
                                     ]}
                                 />
+                                <TextValidator
+                                    sx={{ mb: 3, width: '100%' }}
+                                    variant="outlined"
+                                    size="small"
+                                    label="First Name"
+                                    onChange={handleChange}
+                                    type="text"
+                                    name="first_name"
+                                    value={first_name || ''}
+                                    validators={['required']}
+                                    errorMessages={['this field is required']}
+                                />
+
+                                <TextValidator
+                                    sx={{ mb: 3, width: '100%' }}
+                                    variant="outlined"
+                                    size="small"
+                                    label="Last Name"
+                                    onChange={handleChange}
+                                    type="text"
+                                    name="last_name"
+                                    value={last_name || ''}
+                                    validators={['required']}
+                                    errorMessages={['this field is required']}
+                                />
+
                                 <TextValidator
                                     sx={{ mb: '16px', width: '100%' }}
                                     label="Password"

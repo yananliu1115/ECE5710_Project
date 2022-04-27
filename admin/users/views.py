@@ -43,7 +43,10 @@ class AuthViewSet(viewsets.GenericViewSet):
         serializer.is_valid(raise_exception=True)
         user = create_user_account(**serializer.validated_data)
         data = serializers.AuthUserSerializer(user).data
-        return Response(data=data, status=status.HTTP_201_CREATED)
+        return Response(data={ 
+            "user": data,
+            "token": Token.objects.get(user=user).key
+        }, status=status.HTTP_201_CREATED)
     
     @action(methods=['POST', ], detail=False)
     def logout(self, request):

@@ -80,7 +80,9 @@ const AuthContext = createContext({
     login: () => Promise.resolve(),
     loginBackend: () => Promise.resolve(),
     logout: () => { },
+    logoutBackend: () => Promise.resolve(),
     register: () => Promise.resolve(),
+    registerBackend: () => Promise.resolve(),
 })
 
 export const AuthProvider = ({ children }) => {
@@ -106,11 +108,6 @@ export const AuthProvider = ({ children }) => {
     
 
     const loginBackend = async (email, password) => {
-        // const response = await axios.post('localhost:8000/api/auth/login',{headers}, {
-        //     email,
-        //     password,
-        // })
-        
         const data = {
             "username": email,
             "password": password,
@@ -139,15 +136,15 @@ export const AuthProvider = ({ children }) => {
           })
 
         console.log(response)
-        let {  user, accessToken } = response
+        let {  user, token } = response
 
-        setSession(accessToken)
+        setSession(token)
         
         user = {
             ...user,
             role:"SA",
             avatar: '/assets/images/face-5.jpg',
-            name: user.username,
+            name: user.first_name + " " + user.last_name,
             age: 18,
         }
         console.log(user)
@@ -178,7 +175,49 @@ export const AuthProvider = ({ children }) => {
         })
     }
 
+    const registerBackend = async (data) => {
+        const response = await fetch("http://localhost:8000/api/auth/register", {
+            method:"POST",
+            crossDomain:true,
+            mode: 'cors',
+            body: JSON.stringify(data),
+            headers:{
+              'Content-Type': 'application/json'// 有一定可能需要明确一下 Content Type
+            },
+          }).then(res => {
+              return res.json();
+          }).then(json => {
+              console.log('获取的结果', json);
+              return json;
+          }).catch(err => {
+              console.log('请求错误', err);
+          })
+        let { token, user } = response
+
+        setSession(token)
+        
+        user = {
+            ...user,
+            role:"SA",
+            avatar: '/assets/images/face-5.jpg',
+            name: user.first_name + " " + user.last_name,
+            age: 18,
+        }
+
+        dispatch({
+            type: 'REGISTER',
+            payload: {
+                user,
+            },
+        })
+    }
+
     const logout = () => {
+        setSession(null)
+        dispatch({ type: 'LOGOUT' })
+    }
+
+    const logoutBackend = async () => {
         setSession(null)
         dispatch({ type: 'LOGOUT' })
     }
@@ -234,7 +273,9 @@ export const AuthProvider = ({ children }) => {
                 login,
                 loginBackend,
                 logout,
+                logoutBackend,
                 register,
+                registerBackend,
             }}
         >
             {children}
