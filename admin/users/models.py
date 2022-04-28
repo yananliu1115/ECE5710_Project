@@ -41,3 +41,9 @@ class User(AbstractUser):
     email = models.EmailField('email address', unique=True)
     REQUIRED_FIELDS = [] # removes email from REQUIRED_FIELDS
     objects = UserManager()
+    
+    def get_all_objects(self):
+        queryset = self._meta.model.objects.all()
+        # can use the below method also
+        # queryset = self.__class__.objects.all()   
+        return queryset

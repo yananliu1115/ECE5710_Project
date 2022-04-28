@@ -80,12 +80,7 @@ const JwtLogin = () => {
             // await login(userInfo.email, userInfo.password)
             const response_user = await loginBackend(userInfo.email, userInfo.password)
             console.log(response_user)
-            if (response_user.is_superuser === true) {
-                navigate('/admin')
-            } else {
-                navigate('/student')
-            }
-            // navigate('/')
+            navigate('/')
         } catch (e) {
             console.log(e)
             setMessage(e.message)

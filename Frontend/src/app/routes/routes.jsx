@@ -9,6 +9,7 @@ import sessionRoutes from 'app/views/sessions/SessionRoutes'
 import MatxLayout from '../components/MatxLayout/MatxLayout'
 import { Navigate } from 'react-router-dom'
 
+
 export const AllPages = () => {
     const all_routes = [
         {
@@ -22,8 +23,7 @@ export const AllPages = () => {
         ...sessionRoutes,
         {
             path: '/',
-            // element: <Navigate to="dashboard/default" />,
-            element: <NotFound />,
+            element: <Navigate to="/dashboard" />,
         },
         {
             path: '*',

@@ -1,6 +1,7 @@
 export const authRoles = {
     admin: ['admin'],
     student: ['student'],
+    all: ['admin', 'student'],
 }
 
 // Check out app/views/dashboard/DashboardRoutes.js

@@ -10,8 +10,8 @@ const redirectRoute = [
     {
         path: '/',
         exact: true,
-        // component: () => <Redirect to="/dashboard/default" />,
-        component: () => <Redirect to="/session/404" />,
+        component: () => <Redirect to="/dashboard" />,
+
 
     },
 ]

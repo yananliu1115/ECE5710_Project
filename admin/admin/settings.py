@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'corsheaders',
     # 'knox',
     'users',
+    'book_manage',
 ]
 
 MIDDLEWARE = [

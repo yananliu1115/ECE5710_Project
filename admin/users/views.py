@@ -24,6 +24,13 @@ class AuthViewSet(viewsets.GenericViewSet):
         'register': serializers.UserRegisterSerializer
     }
 
+    @action(methods=['GET', ], detail=False)
+    def allusers(self, request):
+        users = get_user_model().objects.all()
+        print(users, file=sys.stdout)
+        serializer = serializers.UserRegisterSerializer(users, many=True)
+        return Response(serializer.data)
+
     @action(methods=['POST', ], detail=False)
     def login(self, request):
         serializer = self.get_serializer(data=request.data)

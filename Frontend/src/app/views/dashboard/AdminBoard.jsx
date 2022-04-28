@@ -35,7 +35,7 @@ const H4 = styled('h4')(({ theme }) => ({
     color: theme.palette.text.secondary,
 }))
 
-const Analytics = () => {
+const AdminBoard = () => {
     const { palette } = useTheme()
 
     return (
@@ -72,4 +72,4 @@ const Analytics = () => {
     )
 }
 
-export default Analytics
+export default AdminBoard
