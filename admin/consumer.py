@@ -18,17 +18,21 @@ def callback(ch, method, properties, body):
     print('Received in admin')
     book_id = int(json.loads(body))
     print(book_id)
+    print(properties)
     
     if properties.content_type == 'book_borrowed':
+        
         book = Book.objects.get(id=book_id)
         book.amount = book.amount - 1
         book.save()
         print("Book is borrowed")
+        
+    elif properties.content_type == 'book_returned':
+        book = Book.objects.get(id=book_id)
+        book.amount = book.amount + 1
+        book.save()
+        print("Book is returned")
 
-    # product = Book.objects.get(id=id)
-    # product.likes = product.likes + 1
-    # product.save()
-    # print('Product likes increased!')
 
 
 channel.basic_consume(queue='admin', on_message_callback=callback, auto_ack=True)
