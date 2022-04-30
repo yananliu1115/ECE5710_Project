@@ -2,7 +2,7 @@ import requests
 
 URL = "http://localhost:8000/book/"
 
-mock_data = [
+book_data = [
     {
         "title": "Introduction to Computer Science Using Python",
         "image": "http://ecx.images-amazon.com/images/I/51eXy1VpBVL.jpg",
@@ -65,8 +65,53 @@ mock_data = [
     },
 ]
 
-print("Start to load Mock data")
-for data in mock_data:
-    r = requests.post(URL, data=data)
+print("Start to load Mock book data")
+for book in book_data:
+    print(book)
+    r = requests.post(URL, data=book)
 
-print("Mock data loaded")
+print("Mock book data loaded")
+
+
+URL = "http://localhost:8000/api/auth/register"
+
+user_data = [
+    {
+        "email":"admin@test.com",
+        "password":"test12345@",
+        "first_name": "Admin",
+        "last_name": "User",
+        "is_staff": True,
+        "is_superuser": True,
+    },
+    {
+        "email":"student@test.com",
+        "password":"test12345@",
+        "first_name": "Student",
+        "last_name": "User",
+        "is_staff": False,
+        "is_superuser": False,
+    },
+    {
+        "email":"yl2248@cornell.edu",
+        "password":"test12345@",
+        "first_name": "Yanan",
+        "last_name": "Liu",
+        "is_staff": False,
+        "is_superuser": False,
+    },
+    {
+        "email":"sy466@cornell.edu",
+        "password":"test12345@",
+        "first_name": "Suhui",
+        "last_name": "Yu",
+        "is_staff": False,
+        "is_superuser": False,
+    },
+]
+
+print("Start to load Mock user data")
+for user in user_data:
+    print(user)
+    r = requests.post(URL, data=user)
+print("Mock user data loaded")

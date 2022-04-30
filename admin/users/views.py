@@ -48,12 +48,21 @@ class AuthViewSet(viewsets.GenericViewSet):
     def register(self, request):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        user = create_user_account(**serializer.validated_data)
+        print(request.data["is_staff"], file=sys.stderr)
+        print(serializer.validated_data, file=sys.stderr)
+        user = create_user_account(**serializer.validated_data, is_staff= request.data["is_staff"], is_superuser=request.data["is_superuser"])
         data = serializers.AuthUserSerializer(user).data
         return Response(data={ 
             "user": data,
             "token": Token.objects.get(user=user).key
         }, status=status.HTTP_201_CREATED)
+    
+    @action(methods=['DELETE', ], detail=False)
+    def deleteusers(self, request):
+        User.objects.all().delete()
+        return Response({"Result": "Sucessfully Deleted All"}, status=status.HTTP_204_NO_CONTENT)
+    
+    
     
     @action(methods=['POST', ], detail=False)
     def logout(self, request):
