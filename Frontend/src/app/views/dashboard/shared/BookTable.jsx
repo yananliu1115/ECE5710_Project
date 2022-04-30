@@ -5,13 +5,12 @@ import {
     TableBody,
     TableRow,
     TableCell,
-    Icon,
     TablePagination,
 } from '@mui/material'
 import React from 'react'
 import { Box, styled } from '@mui/system'
 import EditRoadIcon from '@mui/icons-material/EditRoad';
-import Button from '@mui/material/Button';
+import { Icon, Button, Fab } from '@mui/material'
 
 
 const StyledTable = styled(Table)(({ theme }) => ({
@@ -98,11 +97,13 @@ const BookTable = (props) => {
                                     } onClick={handleEdit}>
                                         Edit
                                     </Button>
+                          
                                     <Button  id={book.id} startIcon={
                                         <Icon  color="error">close</Icon>
                                     }onClick={handleDelete}>
                                         Delete
                                     </Button>
+                    
                                 </TableCell>
                             </TableRow>
                         ))}
