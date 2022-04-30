@@ -114,8 +114,6 @@ const StudentBoard = () => {
             console.log('获取的结果', json);
             const book_id_list = json["book_id_list"]
             convertToBorrowedBooks(book_id_list.split(";"))
-            
-
         }).catch(err => {
             console.log('请求错误', err);
         })
@@ -166,8 +164,8 @@ const StudentBoard = () => {
             return res.json();
         }).then(json => {
             console.log('获取的结果', json);
+            fetchAllBooks();
             fetchBorrowedBooks();
-
         }).catch(err => {
             console.log('请求错误', err);
         })
