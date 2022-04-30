@@ -12,7 +12,6 @@ import { useNavigate } from 'react-router-dom'
 import { Box, styled, useTheme } from '@mui/system'
 import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator'
 import { Paragraph, Span } from 'app/components/Typography'
-import { TextSnippet } from '@mui/icons-material'
 
 const FlexBox = styled(Box)(() => ({
     display: 'flex',
@@ -60,7 +59,7 @@ const JwtLogin = () => {
         password: '',
     })
     const [message, setMessage] = useState('')
-    const { login, loginBackend} = useAuth()
+    const {  loginBackend} = useAuth()
 
     const handleChange = ({ target: { name, value } }) => {
         let temp = { ...userInfo }

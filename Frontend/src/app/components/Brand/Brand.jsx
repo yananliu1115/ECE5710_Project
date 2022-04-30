@@ -1,5 +1,4 @@
 import React from 'react'
-import { MatxLogo } from 'app/components'
 import { Span } from '../../components/Typography'
 import { styled, Box } from '@mui/system'
 import useSettings from 'app/hooks/useSettings'

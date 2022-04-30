@@ -2,11 +2,8 @@ import React, { Fragment, useState, useEffect } from 'react'
 import { styled } from '@mui/system'
 
 import { Breadcrumb, SimpleCard } from 'app/components'
-import BookTable from './shared/BookTable'
 import BorrowedBookTable from './shared/BorrowedBookTable'
 import Button from '@mui/material/Button';
-import Icon from '@mui/material/Icon';
-import CreateBookDialog from './shared/CreateBookDialog'
 import useAuth from 'app/hooks/useAuth'
 import { AiOutlineSwap } from "react-icons/ai";
 import LibraryGalley from "./shared/LibraryGalley"
@@ -30,16 +27,6 @@ const StudentBoard = () => {
     const [contentType, setContentType] = useState('allBooks');
     const [books, setBooks] = useState([]);
     const [borrowedBooks, setBorrowedBooks] = useState([]);
-    const [open, setOpen] = useState(false);
-
-    const handleClickOpen = () => {
-        setOpen(true);
-      };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
-
 
     const handleSwitch = () => {
         if (contentType === 'allBooks') {

@@ -1,5 +1,4 @@
 import Mock from '../mock'
-import shortId from 'shortid'
 
 const NotificationDB = {
     list: [

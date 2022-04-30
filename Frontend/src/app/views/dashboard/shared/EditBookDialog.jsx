@@ -5,11 +5,10 @@ import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
+import { ValidatorForm,  } from 'react-material-ui-form-validator'
 
 export default function EditBookDialog(props) {
     const [state, setState] = useState({

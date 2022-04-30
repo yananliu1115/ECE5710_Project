@@ -1,7 +1,6 @@
 import React from 'react'
-import { Span, Paragraph } from '../Typography'
 import useSettings from 'app/hooks/useSettings'
-import { Button, Toolbar, AppBar, ThemeProvider } from '@mui/material'
+import {  Toolbar, AppBar, ThemeProvider } from '@mui/material'
 import { styled, useTheme } from '@mui/system'
 import { topBarHeight } from 'app/utils/constant'
 
@@ -23,14 +22,6 @@ const AppFooter = styled(Toolbar)(() => ({
     },
 }))
 
-const FooterContent = styled('div')(() => ({
-    width: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    padding: '0px 1rem',
-    maxWidth: '1170px',
-    margin: '0 auto',
-}))
 
 const Footer = () => {
     const theme = useTheme()

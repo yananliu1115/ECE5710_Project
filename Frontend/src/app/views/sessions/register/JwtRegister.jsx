@@ -38,7 +38,7 @@ const JWTRegister = styled(JustifyBox)(() => ({
 const JwtRegister = () => {
     const navigate = useNavigate()
     const [state, setState] = useState({})
-    const { register,registerBackend } = useAuth()
+    const { registerBackend } = useAuth()
 
     const handleChange = ({ target: { name, value } }) => {
         setState({

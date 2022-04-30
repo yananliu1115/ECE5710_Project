@@ -5,7 +5,6 @@ import useSettings from 'app/hooks/useSettings'
 import { styled, useTheme, Box } from '@mui/system'
 import { Span } from '../../../components/Typography'
 import { MatxMenu, MatxSearchBox } from 'app/components'
-import ShoppingCart from '../../ShoppingCart/ShoppingCart'
 import NotificationBar from '../../NotificationBar/NotificationBar'
 import { themeShadows } from 'app/components/MatxTheme/themeColors'
 import { NotificationProvider } from 'app/contexts/NotificationContext'
@@ -78,17 +77,12 @@ const StyledItem = styled(MenuItem)(({ theme }) => ({
     },
 }))
 
-const IconBox = styled('div')(({ theme }) => ({
-    display: 'inherit',
-    [theme.breakpoints.down('md')]: {
-        display: 'none !important',
-    },
-}))
+
 
 const Layout1Topbar = () => {
     const theme = useTheme()
     const { settings, updateSettings } = useSettings()
-    const { logout, logoutBackend, user } = useAuth()
+    const {  logoutBackend, user } = useAuth()
     const isMdScreen = useMediaQuery(theme.breakpoints.down('md'))
     const navigate = useNavigate();
 

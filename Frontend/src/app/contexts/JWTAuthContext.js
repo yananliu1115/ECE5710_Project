@@ -1,9 +1,6 @@
 import React, { createContext, useEffect, useReducer } from 'react'
-import jwtDecode from 'jwt-decode'
 import axios from 'axios.js'
 import { MatxLoading } from 'app/components'
-import { nextMonday } from 'date-fns'
-import { Navigate } from 'react-router-dom'
 
 
 const initialState = {
