@@ -2,6 +2,7 @@
 *__pycache__*
 *.zip
 *node_modules*
-Backend/mysql*
-*.dbdata*
+admin/*/migrations*
+*mysqld*
+*.dbdata
 # *migrations*
