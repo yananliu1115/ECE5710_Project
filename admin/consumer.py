@@ -1,11 +1,13 @@
 import pika, json, os, django
 
+url = os.environ.get('MQ_URL')  
+
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "admin.settings")
 django.setup()
 
 from book_manage.models import Book
 
-params = pika.URLParameters('amqps://mxodroxr:MZoGlc3-Gg27A4mmL55hwHZbuLjnYXC8@toad.rmq.cloudamqp.com/mxodroxr')
+params = pika.URLParameters(f'{url}')
 
 connection = pika.BlockingConnection(params)
 

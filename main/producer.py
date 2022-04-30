@@ -1,6 +1,8 @@
-import pika, json
+import pika, json, os
 
-params = pika.URLParameters('amqps://mxodroxr:MZoGlc3-Gg27A4mmL55hwHZbuLjnYXC8@toad.rmq.cloudamqp.com/mxodroxr')
+url = os.environ.get('MQ_URL')  
+
+params = pika.URLParameters(f'{url}')
 
 connection = pika.BlockingConnection(params)
 

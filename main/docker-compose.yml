@@ -9,7 +9,8 @@ services:
     # command: [sh, -c, 'sleep 10  && python main.py'] 
 
     command: [sh, -c, 'sleep infinity'] 
-
+    env_file:
+      - .env
     ports:
       - 8001:5000
     volumes:
@@ -25,6 +26,8 @@ services:
       dockerfile: Dockerfile
     # command: [sh, -c , 'sleep 10 && python -u consumer.py']
     command: [sh, -c, 'sleep infinity'] 
+    env_file:
+      - .env
     volumes:
       - .:/app
       - ./mysqld:/var/run/mysqld:rw
