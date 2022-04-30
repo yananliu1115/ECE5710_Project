@@ -1,15 +1,17 @@
 version: '3.8'
 services:
   frontend:
-    build: ./Frontend
+    build: 
+      context: ./Frontend
+      dockerfile: Dockerfile
     working_dir: /app
     container_name: frontend
     volumes:
       - ./Frontend:/app
-    command: bash -c "npm start"
+    # command: bash -c "npm start"
     ports:
-      - "3000:3000"
-    stdin_open: true
+      - "3000:80"
+    # stdin_open: true
   
   admin_backend:
     container_name: admin_backend
