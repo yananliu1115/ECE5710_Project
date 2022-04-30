@@ -55,6 +55,7 @@ const BookTable = (props) => {
 
     const handleEdit = (event) => {
         console.log(event.target.id)
+        console.log(event.target)
         props.handleEditBook(event.target.id)
 
     }
@@ -78,7 +79,7 @@ const BookTable = (props) => {
                             page * rowsPerPage + rowsPerPage
                         )
                         .map((book, index) => (
-                            <TableRow key={index}>
+                            <TableRow>
                                 {/* <TableCell align="left">
                                     {book.id}
                                 </TableCell> */}
@@ -92,12 +93,16 @@ const BookTable = (props) => {
                                     <text style={{ fontSize: '16px' }}>{book.amount}</text>
                                 </TableCell>
                                 <TableCell align="left">
-                                    <IconButton onClick={handleEdit}>
-                                        <EditRoadIcon id={book.id} color="primary" />
-                                    </IconButton>
-                                    <IconButton  onClick={handleDelete}>
-                                        <Icon id={book.id} color="error">close</Icon>
-                                    </IconButton>
+                                    <Button  id={book.id} startIcon={
+                                        <EditRoadIcon  color="primary" />
+                                    } onClick={handleEdit}>
+                                        Edit
+                                    </Button>
+                                    <Button  id={book.id} startIcon={
+                                        <Icon  color="error">close</Icon>
+                                    }onClick={handleDelete}>
+                                        Delete
+                                    </Button>
                                 </TableCell>
                             </TableRow>
                         ))}
