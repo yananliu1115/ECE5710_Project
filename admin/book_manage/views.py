@@ -1,7 +1,7 @@
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
+import sys
 from .models import Book
 from .producer import publish
 from .serializers import BookSerializer
@@ -26,6 +26,7 @@ class BookView(viewsets.ViewSet):
         return Response(serializer.data)
 
     def update(self, request, pk=None):
+        pk = int(pk)
         book = Book.objects.get(id=pk)
         serializer = BookSerializer(instance=book, data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -34,7 +35,9 @@ class BookView(viewsets.ViewSet):
         return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
 
     def destroy(self, request, pk=None):
+        # print(pk, file=sys.stderr)
+        pk = int(pk)
         book = Book.objects.get(id=pk)
         book.delete()
         publish('book_deleted', pk)
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response({"Result": "Sucessfully Deleted"}, status=status.HTTP_204_NO_CONTENT)

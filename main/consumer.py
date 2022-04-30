@@ -21,19 +21,19 @@ def callback(ch, method, properties, body):
         db.session.add(book)
         db.session.commit()
         print('Book Created')
+    elif properties.content_type == 'book_updated':
+        book = Book.query.filter_by(id=data['id']).first()
+        book.title = data['title']
+        book.image = data['image']
+        book.amount = data['amount']
+        db.session.commit()
+        print('Book Updated')
 
-    # elif properties.content_type == 'book_updated':
-    #     product = Book.query.get(data['id'])
-    #     product.title = data['title']
-    #     product.image = data['image']
-    #     db.session.commit()
-    #     print('Book Updated')
-
-    # elif properties.content_type == 'book_deleted':
-    #     product = Book.query.get(data)
-    #     db.session.delete(product)
-    #     db.session.commit()
-    #     print('Book Deleted')
+    elif properties.content_type == 'book_deleted':
+        book = Book.query.filter_by(id=data).first()
+        db.session.delete(book)
+        db.session.commit()
+        print('Book Deleted')
 
 
 channel.basic_consume(queue='main', on_message_callback=callback, auto_ack=True)

@@ -51,7 +51,8 @@ def index():
 
 @app.route('/api/userbooks', methods=['POST'])
 def get_userbooks():
-    user_id = int(request.form['user_id'])
+    print(request.json['user_id'])
+    user_id = int(request.json['user_id'])
     print(user_id) 
     if db.session.query(BookUser).filter_by(user_id=user_id).first() is not None:
         print("111111")
@@ -72,8 +73,8 @@ def get_userbooks():
 # ```
 @app.route('/api/books/borrow', methods=['POST'])
 def borrow():
-    user_id = int(request.form['user_id'])
-    book_id = int(request.form['book_id'])
+    user_id = int(request.json['user_id'])
+    book_id = int(request.json['book_id'])
     print(user_id, book_id)
     try:
         book = Book.query.filter_by(id=book_id).first()
@@ -115,8 +116,8 @@ def borrow():
 
 @app.route('/api/books/return', methods=['POST'])
 def return_book():
-    user_id = int(request.form['user_id'])
-    book_id = int(request.form['book_id'])
+    user_id = int(request.json['user_id'])
+    book_id = int(request.json['book_id'])
     print(user_id, book_id)
     try:
         book = Book.query.filter_by(id=book_id).first()

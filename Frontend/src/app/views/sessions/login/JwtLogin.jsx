@@ -56,8 +56,8 @@ const JwtLogin = () => {
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
     const [userInfo, setUserInfo] = useState({
-        email: 'yl2248@cornell.edu',
-        password: 'test12345@',
+        email: '',
+        password: '',
     })
     const [message, setMessage] = useState('')
     const { login, loginBackend} = useAuth()
@@ -109,7 +109,7 @@ const JwtLogin = () => {
                                     size="small"
                                     label="Email"
                                     onChange={handleChange}
-                                    type="username"
+                                    type="email"
                                     name="email"
                                     value={userInfo.email}
                                     validators={['required']}

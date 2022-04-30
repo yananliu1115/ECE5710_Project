@@ -6,6 +6,7 @@ import { Paragraph, Span } from '../Typography'
 import { Icon, ButtonBase } from '@mui/material'
 import MatxVerticalNavExpansionPanel from './MatxVerticalNavExpansionPanel'
 
+
 const ListLabel = styled(Paragraph)(({ theme, mode }) => ({
     fontSize: '12px',
     marginTop: '20px',
