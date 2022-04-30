@@ -1,6 +1,3 @@
-cd ./Frontend
-docker-compose stop
-cd ../admin
-docker-compose stop
-cd ../main
+echo "Stop Project containers"
+
 docker-compose stop

@@ -1,8 +1,3 @@
-cd ./Frontend
-docker-compose up -d
+echo "Start Project containers"
 
-cd ../admin
-docker-compose up -d
-
-cd ../main
-docker-compose up -d
+docker-compose up

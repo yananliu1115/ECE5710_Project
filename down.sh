@@ -1,6 +1,3 @@
-cd ./Frontend
-docker-compose down
-cd ../admin
-docker-compose down
-cd ../main
+echo "Stop and Delete Project containers"
+
 docker-compose down
