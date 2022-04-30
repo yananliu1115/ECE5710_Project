@@ -137,6 +137,14 @@ def return_book():
     except:
         abort(400, 'You already returned this book')
     
+@app.route('/api/deleteall', methods=['DELETE'])
+def delete_all_data():
+    db.session.query(Book).delete()
+    db.session.commit()
+    db.session.query(BookUser).delete()
+    db.session.commit()
 
+    return jsonify({"message": "Successfully deleted all data"})
+            
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')

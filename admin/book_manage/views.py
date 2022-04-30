@@ -19,6 +19,10 @@ class BookView(viewsets.ViewSet):
         serializer.save()
         publish('book_created', serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED) 
+    
+    def delete_all(self, request):
+        Book.objects.all().delete()
+        return Response({"Result": "Sucessfully Deleted All"}, status=status.HTTP_204_NO_CONTENT)
 
     def retrieve(self, request, pk=None):
         book = Book.objects.get(id=pk)
