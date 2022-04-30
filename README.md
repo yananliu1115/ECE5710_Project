@@ -4,11 +4,15 @@
 ### Frontend
 ```
 cd Frontend
-npm install
-npm start
+docker-compose up
 ```
 
-### Backend 
+### Backend - admin
+Under the `admin` directory, open the docker-compose.yml file and uncomment the line `command: xxxx sleep `  in `admin_backend` and `admin_queue`. 
+
+Do the samething in `main` directory.
+
+Then:
 ```
 cd admin
 sudo docker-compose up 
@@ -47,5 +51,14 @@ Inside the container, run `python manage.py runserver 0.0.0.0:8000`Go to http://
 
 If nothing bad happened, you have successfully started the backend.
 
+
+## Regular run
+
+## How to clean up
+In `admin` and `main`, delete `.dbdata` and `mysqld` by running following commands:
+```
+rm -rf .dbdata mysqld
+```
+Then restart the entire project
 
 
