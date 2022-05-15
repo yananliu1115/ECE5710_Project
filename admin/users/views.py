@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-# Create your views here.
+
 from django.contrib.auth import get_user_model, logout
 from django.core.exceptions import ImproperlyConfigured
 from rest_framework import viewsets, status

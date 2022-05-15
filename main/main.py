@@ -91,7 +91,6 @@ def borrow():
             
     except:
         abort(400, 'You already borrowed this book')
-    
 
 
 @app.route('/api/books/return', methods=['POST'])
