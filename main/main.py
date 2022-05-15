@@ -4,13 +4,14 @@ from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import UniqueConstraint
 import requests
-
+from flask_redis import FlaskRedis
 from collections import Counter
 from producer import publish
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = 'mysql://root:root@main_db/main'
 CORS(app)
+redis_client = FlaskRedis(app)
 
 db = SQLAlchemy(app)
 
