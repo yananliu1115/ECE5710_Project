@@ -97,21 +97,6 @@ def borrow():
             
     except:
         abort(400, 'You already borrowed this book')
-    # req = requests.get('http://docker.for.mac.localhost:8000/api/user')
-    # json = req.json()
-
-    # try:
-    #     productUser = ProductUser(user_id=json['id'], product_id=id)
-    #     db.session.add(productUser)
-    #     db.session.commit()
-
-    #     publish('product_liked', id)
-    # except:
-    #     abort(400, 'You already liked this product')
-
-    # return jsonify({
-    #     'message': 'success'
-    # })
 
 
 @app.route('/api/books/return', methods=['POST'])
