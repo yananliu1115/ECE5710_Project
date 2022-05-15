@@ -7,7 +7,6 @@ const DashBoard = () => {
 
     const { user} = useAuth()
     
-    // console.log(user)
 
     return (
         

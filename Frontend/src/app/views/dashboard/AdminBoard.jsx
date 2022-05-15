@@ -87,15 +87,15 @@ const create_new_book = async (book_data)=> {
             crossDomain: true,
             mode: 'cors',
             headers: {
-                'Content-Type': 'application/json'// 有一定可能需要明确一下 Content Type
+                'Content-Type': 'application/json'
             },
         }).then(res => {
             return res.json();
         }).then(json => {
-            console.log('获取的结果', json);
+            console.log( json);
             return json;
         }).catch(err => {
-            console.log('请求错误', err);
+            console.log( err);
         })
         console.log(book_data)
         setBooks(book_data);
@@ -115,7 +115,7 @@ const create_new_book = async (book_data)=> {
             crossDomain: true,
             mode: 'cors',
             headers: {
-                'Content-Type': 'application/json'// 有一定可能需要明确一下 Content Type
+                'Content-Type': 'application/json'
             },
         })
         fecthAllBooks()
@@ -124,14 +124,13 @@ const create_new_book = async (book_data)=> {
 
     const handleEditBook = async (new_book_data) => {
         console.log("Edit A Book")
-        // console.log(new_book_data)
         await fetch(`http://localhost:8000/book/edit/${new_book_data.id}`, {
             method: "PUT",
             crossDomain: true,
             mode: 'cors',
             body: JSON.stringify(new_book_data),
             headers: {
-                'Content-Type': 'application/json'// 有一定可能需要明确一下 Content Type
+                'Content-Type': 'application/json'
             },
         })
         fecthAllBooks()

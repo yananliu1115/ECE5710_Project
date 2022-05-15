@@ -18,7 +18,6 @@ export default function EditBookDialog(props) {
     })
 
     useEffect(() => {
-        //  console.log(props.data)
         if (props.data !== undefined ) { 
         console.log(props.data) 
          setState(props.data)

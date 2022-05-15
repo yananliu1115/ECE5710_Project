@@ -7,7 +7,6 @@ import Button from '@mui/material/Button';
 export default function LibraryGalley(props) {
 
     const handleOnClick = (event) => {
-        // console.log(event.target.id)
         props.handleBorrowBook(event.target.id)
     }
 

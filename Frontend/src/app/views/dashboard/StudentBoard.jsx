@@ -43,7 +43,7 @@ const StudentBoard = () => {
             crossDomain: true,
             mode: 'cors',
             headers: {
-                'Content-Type': 'application/json'// 有一定可能需要明确一下 Content Type
+                'Content-Type': 'application/json'
             },
         }).then(res => {
             return res.json();
@@ -106,16 +106,15 @@ const StudentBoard = () => {
             }),
             mode: 'cors',
             headers: {
-                'Content-Type': 'application/json'// 有一定可能需要明确一下 Content Type
+                'Content-Type': 'application/json'
             },
         }).then(res => {
             return res.json();
         }).then(json => {
-            console.log('获取的结果', json);
             const book_id_list = json["book_id_list"]
             convertToBorrowedBooks(book_id_list.split(";"))
         }).catch(err => {
-            console.log('请求错误', err);
+            console.log( err);
         })
         
     }
@@ -135,16 +134,16 @@ const StudentBoard = () => {
             }),
             mode: 'cors',
             headers: {
-                'Content-Type': 'application/json'// 有一定可能需要明确一下 Content Type
+                'Content-Type': 'application/json'
             },
         }).then(res => {
             return res.json();
         }).then(json => {
-            console.log('获取的结果', json);
+            console.log( json);
             fetchAllBooks();
 
         }).catch(err => {
-            console.log('请求错误', err);
+            console.log( err);
         })
     }
 
@@ -158,16 +157,16 @@ const StudentBoard = () => {
             }),
             mode: 'cors',
             headers: {
-                'Content-Type': 'application/json'// 有一定可能需要明确一下 Content Type
+                'Content-Type': 'application/json'
             },
         }).then(res => {
             return res.json();
         }).then(json => {
-            console.log('获取的结果', json);
+            console.log( json);
             fetchAllBooks();
             fetchBorrowedBooks();
         }).catch(err => {
-            console.log('请求错误', err);
+            console.log( err);
         })
     }
 

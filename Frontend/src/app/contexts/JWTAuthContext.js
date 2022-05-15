@@ -155,17 +155,15 @@ export const AuthProvider = ({ children }) => {
                 password: password,
               }),
             headers:{
-              'Content-Type': 'application/json'// 有一定可能需要明确一下 Content Type
+              'Content-Type': 'application/json'
             },
-           
-            // data:data
           }).then(res => {
               return res.json();
           }).then(json => {
-              console.log('获取的结果', json);
+              console.log( json);
               return json;
           }).catch(err => {
-              console.log('请求错误', err);
+              console.log( err);
           })
 
         console.log(response)
@@ -211,15 +209,15 @@ export const AuthProvider = ({ children }) => {
             mode: 'cors',
             body: JSON.stringify(data),
             headers:{
-              'Content-Type': 'application/json'// 有一定可能需要明确一下 Content Type
+              'Content-Type': 'application/json'
             },
           }).then(res => {
               return res.json();
           }).then(json => {
-              console.log('获取的结果', json);
+              console.log(json);
               return json;
           }).catch(err => {
-              console.log('请求错误', err);
+              console.log( err);
           })
         let { token, user } = response
 
@@ -244,17 +242,17 @@ export const AuthProvider = ({ children }) => {
             crossDomain:true,
             mode: 'cors',
             headers:{
-              'Content-Type': 'application/json'// 有一定可能需要明确一下 Content Type
+              'Content-Type': 'application/json'
             },
           }).then(res => {
               return res.json();
           }).then(json => {
-              console.log('获取的结果', json);
+              console.log(json);
               setSession(null)
                 dispatch({ type: 'LOGOUT' })
               return json;
           }).catch(err => {
-              console.log('请求错误', err);
+              console.log( err);
           })
     }
 
@@ -265,8 +263,7 @@ export const AuthProvider = ({ children }) => {
 
                 if (accessToken && isValidToken(accessToken)) {
                     setSession(accessToken)
-                    // const response = await axios.get('/api/auth/profile')
-                    // const { user } = response.data
+
                     const user = JSON.parse(localStorage.getItem('user'))
 
                     dispatch({
