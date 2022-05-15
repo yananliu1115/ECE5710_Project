@@ -35,7 +35,6 @@ class AuthViewSet(viewsets.GenericViewSet):
     def login(self, request):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        print("1111111111******************1111*************", file=sys.stderr)
         user = get_and_authenticate_user(**serializer.validated_data)
         data = serializers.AuthUserSerializer(user).data
         print(data, file=sys.stderr)
@@ -48,8 +47,6 @@ class AuthViewSet(viewsets.GenericViewSet):
     def register(self, request):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        print(request.data["is_staff"], file=sys.stderr)
-        print(serializer.validated_data, file=sys.stderr)
         user = create_user_account(**serializer.validated_data, is_staff= request.data["is_staff"], is_superuser=request.data["is_superuser"])
         data = serializers.AuthUserSerializer(user).data
         return Response(data={ 

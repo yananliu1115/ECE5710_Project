@@ -60,54 +60,50 @@ const BookTable = (props) => {
 
     return (
         <Box width="100%" overflow="auto">
-            <StyledTable>
-                <TableHead>
-                    <TableRow>
-                        {/* <TableCell>ID</TableCell> */}
-                        <TableCell>Title</TableCell>
-                        <TableCell>Image</TableCell>
-                        <TableCell>Amount</TableCell>
-                        <TableCell>Action</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {props.books
-                        .slice(
-                            page * rowsPerPage,
-                            page * rowsPerPage + rowsPerPage
-                        )
-                        .map((book, index) => (
-                            <TableRow>
-                                {/* <TableCell align="left">
-                                    {book.id}
-                                </TableCell> */}
-                                <TableCell align="left">
-                                    <text style={{ fontSize: '16px' }}>{book.title}</text>
-                                </TableCell>
-                                <TableCell align="left">
-                                    <img src={book.image} style={{ height: "80px", width: "80px" }} alt="book" />
-                                </TableCell>
-                                <TableCell>
-                                    <text style={{ fontSize: '16px' }}>{book.amount}</text>
-                                </TableCell>
-                                <TableCell align="left">
-                                    <Button  id={book.id} startIcon={
-                                        <EditRoadIcon  color="primary" />
-                                    } onClick={handleEdit}>
-                                        Edit
-                                    </Button>
-                          
-                                    <Button  id={book.id} startIcon={
-                                        <Icon  color="error">close</Icon>
-                                    }onClick={handleDelete}>
-                                        Delete
-                                    </Button>
-                    
-                                </TableCell>
-                            </TableRow>
-                        ))}
-                </TableBody>
-            </StyledTable>
+<StyledTable>
+    <TableHead>
+        <TableRow>
+            <TableCell>Title</TableCell>
+            <TableCell>Image</TableCell>
+            <TableCell>Amount</TableCell>
+            <TableCell>Action</TableCell>
+        </TableRow>
+    </TableHead>
+    <TableBody>
+        {props.books
+            .slice(
+                page * rowsPerPage,
+                page * rowsPerPage + rowsPerPage
+            )
+            .map((book, index) => (
+                <TableRow>
+                    <TableCell align="left">
+                        <text style={{ fontSize: '16px' }}>{book.title}</text>
+                    </TableCell>
+                    <TableCell align="left">
+                        <img src={book.image} style={{ height: "80px", width: "80px" }} alt="book" />
+                    </TableCell>
+                    <TableCell>
+                        <text style={{ fontSize: '16px' }}>{book.amount}</text>
+                    </TableCell>
+                    <TableCell align="left">
+                        <Button  id={book.id} startIcon={
+                            <EditRoadIcon  color="primary" />
+                        } onClick={handleEdit}>
+                            Edit
+                        </Button>
+                
+                        <Button  id={book.id} startIcon={
+                            <Icon  color="error">close</Icon>
+                        }onClick={handleDelete}>
+                            Delete
+                        </Button>
+        
+                    </TableCell>
+                </TableRow>
+            ))}
+    </TableBody>
+</StyledTable>
 
             <TablePagination
                 sx={{ px: 2 }}

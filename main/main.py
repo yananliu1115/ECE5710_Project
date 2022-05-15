@@ -55,11 +55,9 @@ def get_userbooks():
     user_id = int(request.json['user_id'])
     print(user_id) 
     if db.session.query(BookUser).filter_by(user_id=user_id).first() is not None:
-        print("111111")
         user_book = BookUser.query.filter_by(user_id=user_id).first()
         return jsonify(user_book)
     else:
-        print("222222")
         user_book = BookUser(user_id=user_id, book_id_list="")
         db.session.add(user_book)
         db.session.commit()
@@ -67,15 +65,11 @@ def get_userbooks():
     
 
 
-# ```
-# Borrow Book
-# Request: user_id, book_id
-# ```
+
 @app.route('/api/books/borrow', methods=['POST'])
 def borrow():
     user_id = int(request.json['user_id'])
     book_id = int(request.json['book_id'])
-    print(user_id, book_id)
     try:
         book = Book.query.filter_by(id=book_id).first()
         book.amount -= 1
@@ -97,21 +91,7 @@ def borrow():
             
     except:
         abort(400, 'You already borrowed this book')
-    # req = requests.get('http://docker.for.mac.localhost:8000/api/user')
-    # json = req.json()
-
-    # try:
-    #     productUser = ProductUser(user_id=json['id'], product_id=id)
-    #     db.session.add(productUser)
-    #     db.session.commit()
-
-    #     publish('product_liked', id)
-    # except:
-    #     abort(400, 'You already liked this product')
-
-    # return jsonify({
-    #     'message': 'success'
-    # })
+    
 
 
 @app.route('/api/books/return', methods=['POST'])

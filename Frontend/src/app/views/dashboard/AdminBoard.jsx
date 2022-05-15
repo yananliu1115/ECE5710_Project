@@ -54,28 +54,25 @@ const AdminBoard = () => {
         handleEditOpen()
     }
     
-    const create_new_book = async (book_data)=> {
-        await fetch("http://localhost:8000/book/", {
-            method: "POST",
-            crossDomain: true,
-            mode: 'cors',
-            body: JSON.stringify(book_data),
-            headers: {
-                'Content-Type': 'application/json'// 有一定可能需要明确一下 Content Type
-            },
-        }).then(res => {
-            return res.json();
-        }).then(json => {
-            console.log('获取的结果', json);
-            console.log("Created book successfully");
-            setOpen(false);
-            // Reload the books
-            fecthAllBooks();
-
-        }).catch(err => {
-            console.log('请求错误', err);
-        })
-    }
+const create_new_book = async (book_data)=> {
+    await fetch("http://localhost:8000/book/", {
+        method: "POST",
+        crossDomain: true,
+        mode: 'cors',
+        body: JSON.stringify(book_data),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    }).then(res => {
+        return res.json();
+    }).then(json => {
+        console.log("Created book successfully");
+        setOpen(false);
+        fecthAllBooks();
+    }).catch(err => {
+        console.log('Erro:', err);
+    })
+}
 
     const handleCreate = (book_data) => {
         console.log("Create A New Book")
